@@ -1,68 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KMProject
 {
     public class CreateSlots : MonoBehaviour
     {
-        public Slot slotPrefab;
-        public Vector2Int offset;
-        public Vector2Int size;
-        public Vector2Int count;
-        private Slot[] slots;
-        private void Start()
-        {
-            slots = new Slot[count.x * count.y];
+        public static readonly int Horizon = 7;
+        public static readonly int Vertical = 8;
+        public static Slot[][] slots;
 
-            for (int i = 0; i < count.x; ++i)
+        public Transform BaseParent;
+
+        public Slot SlotPrefab;
+        public GameObject iconPrefab;
+
+        public Sprite[] iconImages;
+
+        public static Slot[] createSlot;
+        void Start()
+        {
+            slots = new Slot[Vertical][];
+           
+            for (int i = 0; i < Vertical; ++i)
             {
-                int y = i * size.y + offset.y;
-                for(int j = 0; j < count.y; ++j)
+                int y = i * -50 + 175;
+                slots[i] = new Slot[Horizon];
+                for (int j = 0; j < Horizon; ++j)
                 {
-                    int x = j * size.x + offset.x;
-                    Slot slot = Instantiate<Slot>(slotPrefab, transform);
-                    slot.transform.localPosition = new Vector3(x, y, 0f);
-                    slot.Index = i * count.x + j;
-                    slots[slot.Index] = slot;
+                    int x = j * 48 - 144;
+                    Slot slot = Instantiate(SlotPrefab);
+                    slot.transform.parent = transform;
+                    slot.transform.localPosition = new Vector3Int(x, y, 0);
+                    slot.createSlotIndex = j;
+                    slots[i][j] = slot;
+                }
+            } 
+            for (int i = 0; i < Vertical; ++i)
+            {
+                for (int j = 0; j < Horizon; ++j)
+                {
+                    slots[i][j].SetNeighborhood(this, j, i);
                 }
             }
-        }
-
-        private Slot selectSlot;
-        private void Update()
-        {
-            if(Input.GetMouseButtonDown(0))
+            createSlot = new Slot[Horizon];
+            for (int i = 0; i < Horizon; ++i)
             {
-                if(selectSlot)
-                    selectSlot.ChangeImage();
-                selectSlot = FindSlot(slots, Input.mousePosition);
-                selectSlot.ChangeImage();
-            }
-            else if (Input.GetMouseButton(0))
-            {
-
+                createSlot[i] = Instantiate(SlotPrefab, transform);
+                createSlot[i].currentType = Slot.ESlottype.Respone;
+                createSlot[i].transform.localPosition = new Vector3Int(i * 48 - 144, 225, 0);
+                createSlot[i].SetNeighborhood(Slot.EDirection.D, slots[0][i]);
+                createSlot[i].createIconCount = Vertical;
+                createSlot[i].BaseParent = BaseParent;
             }
         }
-        public bool PtInRect(Vector3 point, Rect rect, Vector3 size)
+        public Slot GetNeighborhood(int y, int x)
         {
-            Vector2 halfSize = size * 0.5f;
-            Vector2 min = rect.position - halfSize;
-            Vector2 max = rect.position + halfSize;
-
-            if (point.x > max.x || point.x < min.x || point.y > max.y || point.y < min.y)
-                return false;
-            return true;
-        }
-        public Slot FindSlot(Slot[] _slots, Vector3 mousePos)
-        {
-            int l = _slots.Length;
-            for(int i = 0; i < l; ++i)
-            {
-                if(PtInRect(mousePos, _slots[i].rect, _slots[i].CurrentIcon.ImageSize))
-                    return _slots[i];
-            }
-            return null;
+            if (y < 0 || x < 0) return null;
+            if (x >= Horizon || y >= Vertical) return null;
+            return slots[y][x];
         }
     }
 }

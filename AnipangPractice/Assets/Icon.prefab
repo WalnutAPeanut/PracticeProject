@@ -9,55 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1239597063438286}
+  m_RootGameObject: {fileID: 1677173991773104}
   m_IsPrefabAsset: 1
---- !u!1 &1239597063438286
+--- !u!1 &1677173991773104
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 224629240322806748}
-  - component: {fileID: 222786090666040274}
-  - component: {fileID: 114915378828884534}
-  - component: {fileID: 114824572467563276}
+  - component: {fileID: 224405736005743120}
+  - component: {fileID: 222680349725994456}
+  - component: {fileID: 114165388359371092}
+  - component: {fileID: 114187896636115668}
+  - component: {fileID: 65031683573203478}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114824572467563276
-MonoBehaviour:
+--- !u!65 &65031683573203478
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239597063438286}
+  m_GameObject: {fileID: 1677173991773104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa03968a21ecb2141a7e6d501fc2cf7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IconPrefab: {fileID: 114187896636115668, guid: f3eee33d3bffa644a9f086c4d7805590,
-    type: 2}
-  neighborhood:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentType: 1
---- !u!114 &114915378828884534
+  serializedVersion: 2
+  m_Size: {x: 50, y: 50, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114165388359371092
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239597063438286}
+  m_GameObject: {fileID: 1677173991773104}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -71,27 +61,46 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f199a8594bbd8c0469d69e2125b56e30, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!222 &222786090666040274
+--- !u!114 &114187896636115668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677173991773104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0630498907af954eb703bded5b9d065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 21300000, guid: f199a8594bbd8c0469d69e2125b56e30, type: 3}
+  - {fileID: 21300000, guid: 9ac48d9ff938bd44e9c84d4c62f302bc, type: 3}
+  - {fileID: 21300000, guid: e6a07185130986c44abb42b6f176b3d1, type: 3}
+  - {fileID: 21300000, guid: 6576fff2b80cda4498fa07126b3cc750, type: 3}
+  image: {fileID: 114165388359371092}
+  targetSlot: {fileID: 0}
+  inconIndex: 0
+--- !u!222 &222680349725994456
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239597063438286}
+  m_GameObject: {fileID: 1677173991773104}
   m_CullTransparentMesh: 0
---- !u!224 &224629240322806748
+--- !u!224 &224405736005743120
 RectTransform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239597063438286}
+  m_GameObject: {fileID: 1677173991773104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 0.18445696, y: 0.18445696, z: 0.18445696}
@@ -102,5 +111,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 48, y: 48}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
