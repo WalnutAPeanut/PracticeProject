@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a7c2813bf92b54794bf8cbbe56192c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasTs: {fileID: 1709433964}
 --- !u!4 &809770906
 Transform:
   m_ObjectHideFlags: 0
@@ -495,9 +496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseParent: {fileID: 571534642}
-  SlotPrefab: {fileID: 114824572467563276, guid: 23a603e421ff3ff498f7d71871a54e90,
+  SlotPrefab: {fileID: 114824572467563276, guid: eaa7a7b0737f49f499cb970df9daf567,
     type: 2}
-  iconPrefab: {fileID: 0}
+  iconPrefab: {fileID: 1677173991773104, guid: f3eee33d3bffa644a9f086c4d7805590, type: 2}
   iconImages:
   - {fileID: 21300000, guid: f199a8594bbd8c0469d69e2125b56e30, type: 3}
   - {fileID: 21300000, guid: 9ac48d9ff938bd44e9c84d4c62f302bc, type: 3}
@@ -733,3 +734,4 @@ MonoBehaviour:
   pivot: {fileID: 0}
   listCheckIcon: []
   listResertIcon: []
+  listEraserIcon: []

@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KMProject
 {
     public class InputManager : MonoBehaviour
     {
         private Slot selectSlot;
-        //        private Vector3 offset = new Vector3(-176f, 313f, 0f);
-        private Vector3 offset = new Vector3(-160f, 293f, 0f);
+        public RectTransform canvasTs;
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -23,7 +23,10 @@ namespace KMProject
                     if (result != selectSlot)
                     {
                         /// 대각선이동도 가능함. 막는방법을 생각해보자.
-                        selectSlot.ChangeIcon(result);
+                        if(result)
+                        {
+                            selectSlot.ChangeIcon(result);
+                        }
                         selectSlot = null;
                     }
                 }
@@ -39,12 +42,14 @@ namespace KMProject
         private Slot PtInRect()
         {
             Vector3 mousePos = Input.mousePosition;
-          //  Camera.main.point
+            mousePos.x -= canvasTs.rect.width * 0.5f;
+            mousePos.y -= canvasTs.rect.height * 0.5f;
+            //  Camera.main.point
             for (int i = 0; i < CreateSlots.Vertical; ++i)
             {
                 for (int j = 0; j < CreateSlots.Horizon; ++j)
                 {
-                    if (CreateSlots.slots[i][j].isInBoxPoint(mousePos, offset))
+                    if (CreateSlots.slots[i][j].isInBoxPoint(mousePos))
                     {
                         CreateSlots.slots[i][j].ChangeIconImage(2);
                         return CreateSlots.slots[i][j];

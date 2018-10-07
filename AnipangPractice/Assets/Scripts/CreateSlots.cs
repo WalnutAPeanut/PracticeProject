@@ -14,11 +14,12 @@ namespace KMProject
         public Transform BaseParent;
 
         public Slot SlotPrefab;
+        public ResponeSlot CreateSlotPrefab;
         public GameObject iconPrefab;
 
         public Sprite[] iconImages;
 
-        public static Slot[] createSlot;
+        public static ResponeSlot[] createSlot;
         void Start()
         {
             slots = new Slot[Vertical][];
@@ -44,11 +45,10 @@ namespace KMProject
                     slots[i][j].SetNeighborhood(this, j, i);
                 }
             }
-            createSlot = new Slot[Horizon];
+            createSlot = new ResponeSlot[Horizon];
             for (int i = 0; i < Horizon; ++i)
             {
-                createSlot[i] = Instantiate(SlotPrefab, transform);
-                createSlot[i].currentType = Slot.ESlottype.Respone;
+                createSlot[i] = Instantiate<ResponeSlot>(CreateSlotPrefab, transform);
                 createSlot[i].transform.localPosition = new Vector3Int(i * 48 - 144, 225, 0);
                 createSlot[i].SetNeighborhood(Slot.EDirection.D, slots[0][i]);
                 createSlot[i].createIconCount = Vertical;

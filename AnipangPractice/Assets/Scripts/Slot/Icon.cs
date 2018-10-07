@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace KMProject
 {
+    /// 아이콘은 오로지 보여주기 위한 객체로로 만든다?
+    /// 움직임은 슬롯에서 관리
+    /// 자신 삭제도 슬롯에서 관리
     public class Icon : MonoBehaviour
     {
         public static Transform BaseParent;
@@ -25,7 +28,7 @@ namespace KMProject
         }
         private void Update()
         {
-            if(targetSlot)
+            if (targetSlot)
                 transform.localPosition = Vector3.Lerp(transform.localPosition, targetSlot.transform.localPosition, Time.deltaTime * 3f);
         }
 
